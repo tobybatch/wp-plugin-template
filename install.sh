@@ -14,7 +14,6 @@ VENDOR="${VENDOR_INPUT:-$DEFAULT_VENDOR}"
 VENDOR="${VENDOR//[^a-zA-Z0-9]/_}"
 
 grep -rq 'NEW_PLUGIN_NAME' . || exit 1
-set -x
 find . -type f \
     ! -name 'install.sh' \
     ! -name 'README.md' \
@@ -23,7 +22,8 @@ find . -type f \
     ! -name 'install.sh' \
     ! -name 'README.md' \
      -exec sed -i "s/VENDOR/$VENDOR/g" {} +
-set +x
+
+mv src/NEW-PLUGIN-NAME.class.php src/${NEW_PLUGIN_NAME}.class.php
 
 if command -v composer &> /dev/null; then
     echo "Composer found. Running composer install..."
