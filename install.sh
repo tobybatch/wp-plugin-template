@@ -7,7 +7,11 @@ read -r -p "Enter plugin name [$DEFAULT_NAME]: " USER_INPUT
 
 PLUGIN_NAME="${USER_INPUT:-$DEFAULT_NAME}"
 PLUGIN_NAME="${PLUGIN_NAME//[^a-zA-Z0-9]/_}"
-VENDOR="${USER//[^a-zA-Z0-9]/_}"
+
+DEFAULT_VENDOR="${VENDOR:-my_vendor}"
+read -r -p "Enter vendor [$DEFAULT_VENDOR]: " VENDOR_INPUT
+VENDOR="${VENDOR_INPUT:-$DEFAULT_VENDOR}"
+VENDOR="${VENDOR//[^a-zA-Z0-9]/_}"
 
 grep -rq 'NEW_PLUGIN_NAME' . || exit 1
 set -x
