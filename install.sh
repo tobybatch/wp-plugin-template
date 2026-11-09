@@ -59,4 +59,6 @@ else
     echo "Node not found, skipping set up"
 fi
 
+rm install.sh
+
 echo "Successfully initialized plugin as: $PLUGIN_NAME"
